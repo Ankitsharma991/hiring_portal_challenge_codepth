@@ -8,7 +8,7 @@ import Profile from "../assets/images/user.png";
 const Floatnav = () => {
   return (
     <Fragment>
-      <div className="lg:bottom-[25vh] md:bottom-[25vh] bottom-[35vh] flex justify-center absolute w-full">
+      <div className="lg:bottom-[25vh] md:bottom-[25vh] bottom-[30.5vh] flex justify-center absolute w-full">
         <div className="flex bg-#f1f1f1 lg:px-12 px-5 py-3 rounded-[50px] fixed justify-center lg:gap-12 gap-5 items-center ">
           <div className="flex hover:text-blue-500 flex-col items-center text-center hover:cursor-pointer hover:scale-[1.1] active:scale-[1.1] active:font-bold hover:font-bold">
             <img
