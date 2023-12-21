@@ -79,7 +79,7 @@ const SignupCard = () => {
               type="submit"
               className="border-2 border-white w-fit h-fit px-8 py-2 font-bold uppercase bg-gray-200 shadow-md "
             >
-              Login
+              Signup
             </button>
             <p className="mt-3">
               Already have an account?{" "}
