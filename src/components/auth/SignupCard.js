@@ -21,8 +21,9 @@ const SignupCard = () => {
               Register Here
             </p>
           </div>
-          <div className="flex flex-col lg:mt-10 mt-2 lg:gap-5 gap-2 justify-start items-start w-full">
-            <div className="flex w-full  bg-white px-2 py-2 h-fit gap-3 border-5 border-red items-center">
+
+          <div className="flex flex-col lg:mt-10 mt-2 lg:gap-5 gap-2 w-full justify-start items-start">
+            <div className="flex w-full  bg-white px-2 py-2 h-fit gap-3  border-5 border-red items-center">
               <FaUser className="lg:h-[30px] lg:w-[30px] w-[20px] h[20px]" />
               <input
                 type="text"
@@ -32,10 +33,10 @@ const SignupCard = () => {
               />
             </div>
 
-            <div className="flex bg-white px-2 py-2 w-full h-fit gap-3 border-5 border-red items-center">
+            <div className="flex w-full  bg-white px-2 py-2 h-fit gap-3 border-5 border-red items-center">
               <MdEmail className="lg:h-[30px] lg:w-[30px] w-[20px] h[20px]" />
               <input
-                type="text"
+                type="email"
                 required
                 className="outline-none text-start border-l-2 border-black pl-5"
                 placeholder="Enter Your Email"
@@ -63,12 +64,12 @@ const SignupCard = () => {
               )}
             </div>
 
-            <div className="flex bg-white px-2 py-2 w-full h-fit gap-3 border-5 border-red items-center">
+            <div className="flex w-full  bg-white px-2 py-2 h-fit gap-3 border-5 border-red items-center">
               <GiConfirmed className="lg:h-[30px] lg:w-[30px] w-[20px] h[20px]" />
               <input
+                type="password"
                 required
                 className="outline-none text-start border-l-2 border-black pl-5"
-                type={"password"}
                 placeholder="Confirm the Password"
               />
             </div>
@@ -78,7 +79,7 @@ const SignupCard = () => {
               type="submit"
               className="border-2 border-white w-fit h-fit px-8 py-2 font-bold uppercase bg-gray-200 shadow-md "
             >
-              Signup
+              Login
             </button>
             <p className="mt-3">
               Already have an account?{" "}
