@@ -7,6 +7,8 @@ import Floatnav from "./components/Floatnav";
 import Homepage from "./components/Homepage";
 import LoginCard from "./components/auth/LoginCard";
 import SignupCard from "./components/auth/SignupCard";
+import Job from "./components/Job";
+import NewJob from "./components/NewJob";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<LoginCard />} />
           <Route path="/signup" element={<SignupCard />} />
+          <Route path="/jobs" element={<Job />} />
+          <Route path="/new-job" element={<NewJob />} />
         </Routes>
         <Floatnav />
         <Footer />
