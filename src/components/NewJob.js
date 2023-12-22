@@ -42,7 +42,7 @@ const NewJob = () => {
                   <label htmlFor="Description">Description:</label>
                   <textarea
                     placeholder="Description of the job"
-                    className="outline-none text-start border-l-2 border-black pl-5"
+                    className="outline-none text-start border-l-2 border-black pl-5 w-full"
                   ></textarea>
                 </div>
                 <div
