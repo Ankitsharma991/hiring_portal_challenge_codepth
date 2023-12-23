@@ -1,7 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { postNewJob } from "./api/authApi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../FirebaseConfig";
 
 const NewJob = () => {
   const currentDate = new Date();
@@ -10,6 +12,7 @@ const NewJob = () => {
     month: "numeric",
     year: "numeric",
   });
+
   const [inputs, setInputs] = useState({
     jobTitle: "",
     skills: "",
@@ -37,6 +40,16 @@ const NewJob = () => {
     }
     console.log(inputs);
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user?.accessToken) {
+        toast.error("Login in to access job list!!");
+        navigate("/login");
+      }
+    });
+    return () => unsubscribe();
+  }, [navigate]);
 
   return (
     <Fragment>
