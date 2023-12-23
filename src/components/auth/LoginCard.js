@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../FirebaseConfig";
+import { toast } from "react-toastify";
 
 const LoginCard = () => {
   const [show, setShow] = useState(false);
   const [inputs, setInputs] = useState({ email: "", password: "" });
 
-  // const alert = useAlert();
   let navigate = useNavigate();
 
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -32,14 +32,13 @@ const LoginCard = () => {
       );
 
       if (regUser?.user) {
-        // alert.success("User logged in successfully!!");
+        toast.success("User logged in successfully!!");
         navigate("/jobs");
       } else {
-        // console.log(error);
-        // alert.error("User not found!!");
+        toast.error("Invalid credentials!!");
       }
     } catch (err) {
-      alert.error(err.message);
+      toast.error(err.message);
     }
   };
 

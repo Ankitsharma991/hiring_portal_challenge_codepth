@@ -6,8 +6,8 @@ import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../FirebaseConfig";
-// import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignupCard = () => {
   const [show, setShow] = useState(false);
@@ -21,7 +21,6 @@ const SignupCard = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
-  // const alert = useAlert();
   const navigate = useNavigate();
 
   const handleChange = async (e) => {
@@ -32,11 +31,11 @@ const SignupCard = () => {
     e.preventDefault();
     console.log(inputs);
     if (inputs.password !== inputs.confirmPassword) {
-      alert.error("Confirm password doesn't match!");
+      toast.error("Confirm password doesn't match!");
       return;
     }
     if (error) {
-      alert.error(error.message);
+      toast.error(error.message);
       return;
     }
     try {
@@ -45,10 +44,10 @@ const SignupCard = () => {
         inputs.password
       );
       if (!newUser) return;
-      // alert.success("User Registered Successfully!!");
+      toast.success("User Registered Successfully!!");
       navigate("/login");
     } catch (error) {
-      // alert.error(error.message);
+      toast.error(error.message);
     }
   };
   return (

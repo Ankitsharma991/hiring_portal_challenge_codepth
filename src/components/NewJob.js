@@ -1,8 +1,15 @@
 import React, { Fragment, useState } from "react";
 import { postNewJob } from "./api/authApi";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const NewJob = () => {
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  });
   const [inputs, setInputs] = useState({
     jobTitle: "",
     skills: "",
@@ -10,9 +17,9 @@ const NewJob = () => {
     link: "",
     jobType: "",
     mode: "",
+    date: formattedDate,
   });
 
-  // const alert = useAlert();
   const navigate = useNavigate();
 
   const handleChange = async (e) => {
@@ -23,10 +30,10 @@ const NewJob = () => {
     e.preventDefault();
     try {
       postNewJob(inputs);
-      // alert.success("Job Created Successfully!!");
+      toast.success("Job Created Successfully!!");
       navigate("/jobs");
     } catch (error) {
-      // alert.error(error.message);
+      toast.error(error.message);
     }
     console.log(inputs);
   };

@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../FirebaseConfig";
 import { firestore } from "../../FirebaseConfig";
-import { collection, doc, setDoc } from "firebase/firestore";
-
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 export const LoginAPI = (email, password) => {
   try {
@@ -13,15 +13,14 @@ export const LoginAPI = (email, password) => {
   }
 };
 
-let dbRef = collection(firestore, "jobs");
+let jobsRef = collection(firestore, "jobs");
 
-export const postNewJob = async(data)=>{
-  let jobDetails = {
-    jobTitle : "",
-    data: "",
-    location:"",
-    description:"",
-    
-  }
-  setDoc(dbRef, data)
-}
+export const postNewJob = async (data) => {
+  addDoc(jobsRef, data)
+    .then(() => {
+      // toast.success("Job Posted Successfully!!");
+    })
+    .catch((err) => {
+      return err;
+    });
+};
