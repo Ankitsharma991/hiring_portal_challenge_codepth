@@ -4,8 +4,10 @@ import { FaUser, FaUserLock } from "react-icons/fa";
 import { GiConfirmed } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
-// import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "../../FirebaseConfig";
+import { useAlert } from "react-alert";
+import { useNavigate } from "react-router-dom";
 
 const SignupCard = () => {
   const [show, setShow] = useState(false);
@@ -16,16 +18,38 @@ const SignupCard = () => {
     confirmPassword: "",
   });
 
-  // const [createUserWithEmailAndPassword, user, loading, error] =
-  //   useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
-  const handleChange = (e) => {
+  const alert = useAlert();
+  const navigate = useNavigate();
+
+  const handleChange = async (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const formSubmitHandler = (e) => {
+  const formSubmitHandler = async (e) => {
     e.preventDefault();
     console.log(inputs);
+    if (inputs.password !== inputs.confirmPassword) {
+      alert.error("Confirm password doesn't match!");
+      return;
+    }
+    if (error) {
+      alert.error(error.message);
+      return;
+    }
+    try {
+      const newUser = await createUserWithEmailAndPassword(
+        inputs.email,
+        inputs.password
+      );
+      if (!newUser) return;
+      alert.success("User Registered Successfully!!");
+      navigate("/login");
+    } catch (error) {
+      alert.error(error.message);
+    }
   };
   return (
     <Fragment>

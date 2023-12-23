@@ -20,7 +20,7 @@ const LoginCard = () => {
      try {
       let res = await LoginAPI(credentails.email, credentails.password);
       alert.success("Logged in successfully!!");
-      localStorage.setItem("userEmail", res.user.email);
+      // localStorage.setItem("userEmail", res.user.email);
       navigate("/home");
     } catch (err) {
       console.log(err);
