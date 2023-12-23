@@ -4,27 +4,38 @@ import { FaUserLock } from "react-icons/fa";
 import { BiSolidHide } from "react-icons/bi";
 import { BiShow } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { LoginAPI } from "../api/authApi";
 import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "../../FirebaseConfig";
 
 const LoginCard = () => {
   const [show, setShow] = useState(false);
-  const [credentails, setCredentails] = useState({});
+  const [inputs, setInputs] = useState({ email: "", password: "" });
 
   const alert = useAlert();
   let navigate = useNavigate();
 
-  const login = async (e) => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const handleChange = async (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const loginHandle = async (e) => {
     e.preventDefault();
-     try {
-      let res = await LoginAPI(credentails.email, credentails.password);
-      alert.success("Logged in successfully!!");
-      // localStorage.setItem("userEmail", res.user.email);
-      navigate("/home");
+
+    try {
+      const regUser = await signInWithEmailAndPassword(
+        inputs.email,
+        inputs.password
+      );
+      if (!regUser) return alert.error(error.message);
+      alert.success("user logged in successfully!!");
+      navigate("/job");
     } catch (err) {
-      console.log(err);
-      alert.error("Please Check your Credentials");
+      alert.error(err.message);
     }
   };
 
@@ -32,7 +43,7 @@ const LoginCard = () => {
     <Fragment>
       <div className="absolute flex justify-center top-[15%] w-full">
         <form
-          onSubmit={login}
+          onSubmit={loginHandle}
           className=" bg-#f1f1f1  flex flex-col items-center px-[3vw] py-[2vh] justify-center h-fit rounded-tr-[50px] rounded-bl-[50px]"
         >
           <div className="w-full justify-center text-center border-b-2 pb-3 border-black">
@@ -49,9 +60,7 @@ const LoginCard = () => {
                 name="email"
                 className="outline-none text-start border-l-2 border-black pl-5"
                 placeholder="Enter Your Email"
-                onChange={(event) =>
-                  setCredentails({ ...credentails, email: event.target.value })
-                }
+                onChange={handleChange}
               />
             </div>
 
@@ -63,12 +72,7 @@ const LoginCard = () => {
                 placeholder="Enter the Password"
                 name="password"
                 type={show ? "text" : "password"}
-                onChange={(event) =>
-                  setCredentails({
-                    ...credentails,
-                    password: event.target.value,
-                  })
-                }
+                onChange={handleChange}
               />
               {show ? (
                 <BiSolidHide
