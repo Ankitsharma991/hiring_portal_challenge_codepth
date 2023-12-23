@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../FirebaseConfig";
+import { Link } from "react-router-dom";
 
 const filters = [
   {
@@ -289,9 +290,11 @@ export default function Example() {
                         </div>
                         <p>{job.skills}</p>
                       </div>
-                      <button className="border-2 border-white w-fit h-fit px-8 py-2 font-bold uppercase bg-gray-200 shadow-md">
-                        View Details
-                      </button>
+                      <Link to={`/job-details/${index}`} state={job}>
+                        <button className="border-2 border-white w-fit h-fit px-8 py-2 font-bold uppercase bg-gray-200 shadow-md">
+                          View Details
+                        </button>
+                      </Link>
                     </div>
                   ))
                 )}

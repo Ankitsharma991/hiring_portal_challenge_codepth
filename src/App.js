@@ -9,6 +9,7 @@ import SignupCard from "./components/auth/SignupCard";
 import Job from "./components/Job";
 import NewJob from "./components/NewJob";
 import { app } from "./FirebaseConfig";
+import JobDesc from "./components/JobDesc";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <div className="top-0 w-full fixed">
           <Navbar />
         </div>
-        <div className="w-full mt-[20vh]">
+        <div className="w-full mt-[15vh]">
           <div className="min-h-[85vh]">
             <Routes>
               <Route path="/" element={<Homepage />} />
@@ -25,8 +26,9 @@ function App() {
               <Route path="/signup" element={<SignupCard />} />
               <Route path="/jobs" element={<Job />} />
               <Route path="/new-job" element={<NewJob />} />
+              <Route path="/job-details/:id" element={<JobDesc />} />
             </Routes>
-            <div className="fixed bottom-[25vh] w-full flex justify-center ">
+            <div className="fixed bottom-[20vh] w-full flex justify-center ">
               <Floatnav className="justify-center" />
             </div>
           </div>
