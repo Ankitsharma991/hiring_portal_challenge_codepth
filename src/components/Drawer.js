@@ -11,6 +11,7 @@ import {
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../FirebaseConfig";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const filters = [
   {
@@ -54,6 +55,7 @@ const filters = [
 export default function Example() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [jobs, setJobs] = useState(null);
+
   const fetchJobs = async () => {
     setJobs(
       (await getDocs(collection(firestore, "jobs"))).docs.map((doc) =>
@@ -64,7 +66,6 @@ export default function Example() {
 
   useEffect(() => {
     if (jobs) {
-      console.log(jobs);
     } else {
       fetchJobs();
     }
@@ -275,7 +276,7 @@ export default function Example() {
               {/* Product grid */}
               <div className="lg:col-span-3 ">
                 {!jobs ? (
-                  <p>No Jobs available</p>
+                  <p className="font-bold">No Jobs available</p>
                 ) : (
                   jobs.map((job, index) => (
                     <div
@@ -285,10 +286,10 @@ export default function Example() {
                       <p className="text-clip font-bold">{job.jobTitle}</p>
                       <div className="flex justify-evenly w-full px-8">
                         <div className="flex gap-3 flex-wrap w-full">
-                          <p>Requirements:</p>
-                          <p>{job.skills}</p>
+                          <p>{job.skills ? "Requirements:" : "N/A"}</p>
+                          <p>{job.skills ? job.skills : ""}</p>
                         </div>
-                        <p>{job.skills}</p>
+                        <p>{job.date}</p>
                       </div>
                       <Link to={`/job-details/${index}`} state={job}>
                         <button className="border-2 border-white w-fit h-fit px-8 py-2 font-bold uppercase bg-gray-200 shadow-md">

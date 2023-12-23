@@ -10,6 +10,7 @@ import Job from "./components/Job";
 import NewJob from "./components/NewJob";
 import { app } from "./FirebaseConfig";
 import JobDesc from "./components/JobDesc";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/jobs" element={<Job />} />
               <Route path="/new-job" element={<NewJob />} />
               <Route path="/job-details/:id" element={<JobDesc />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
             <div className="fixed bottom-[20vh] w-full flex justify-center ">
               <Floatnav className="justify-center" />

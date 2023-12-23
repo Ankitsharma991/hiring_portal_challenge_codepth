@@ -71,6 +71,7 @@ const NewJob = () => {
                   <label htmlFor="job_title">Job Title:</label>
                   <input
                     type="text"
+                    required
                     onChange={handleChange}
                     name="jobTitle"
                     placeholder="Frontend Developer"
@@ -86,6 +87,7 @@ const NewJob = () => {
                   <input
                     type="text"
                     name="skills"
+                    required
                     onChange={handleChange}
                     className="outline-none text-start border-l-2 border-black pl-5 w-3/4"
                     placeholder="ReactJs, JavaScript, HTML, CSS"
@@ -98,6 +100,7 @@ const NewJob = () => {
                   <label htmlFor="Description">Description:</label>
                   <textarea
                     name="description"
+                    required
                     onChange={handleChange}
                     placeholder="XYZ Tech Solutions is a leading technology company specializing in innovative..."
                     className="outline-none text-start border-l-2 border-black pl-5 w-full"
@@ -111,6 +114,7 @@ const NewJob = () => {
                   <input
                     name="link"
                     type="text"
+                    required
                     onChange={handleChange}
                     placeholder="https://www.example.com/"
                     className="outline-none text-start border-l-2 w-full border-black pl-5"
@@ -125,6 +129,7 @@ const NewJob = () => {
                   <input
                     name="jobType"
                     type="text"
+                    required
                     onChange={handleChange}
                     placeholder="Internship/Full-time/Part-time"
                     className="outline-none text-start border-l-2 border-black pl-5"
@@ -139,6 +144,7 @@ const NewJob = () => {
                   <input
                     type="text"
                     name="mode"
+                    required
                     onChange={handleChange}
                     className="outline-none text-start border-l-2 border-black pl-5 w-3/4"
                     placeholder="Remote/In-Office/Hybrid"

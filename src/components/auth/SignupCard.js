@@ -29,7 +29,6 @@ const SignupCard = () => {
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log(inputs);
     if (inputs.password !== inputs.confirmPassword) {
       toast.error("Confirm password doesn't match!");
       return;

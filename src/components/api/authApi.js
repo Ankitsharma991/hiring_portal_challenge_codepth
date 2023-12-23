@@ -1,8 +1,10 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../FirebaseConfig";
 import { firestore } from "../../FirebaseConfig";
 import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+
+
 
 export const LoginAPI = (email, password) => {
   try {
@@ -24,3 +26,5 @@ export const postNewJob = async (data) => {
       return err;
     });
 };
+
+
