@@ -49,5 +49,8 @@
   },
   "devDependencies": {
     "daisyui": "^4.4.23"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
