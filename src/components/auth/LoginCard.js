@@ -4,17 +4,35 @@ import { FaUserLock } from "react-icons/fa";
 import { BiSolidHide } from "react-icons/bi";
 import { BiShow } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { LoginAPI } from "../api/authApi";
+import { useAlert } from "react-alert";
+import { useNavigate } from "react-router-dom";
 
 const LoginCard = () => {
   const [show, setShow] = useState(false);
+  const [credentails, setCredentails] = useState({});
 
-  const formSubmitHandler = () => {};
+  const alert = useAlert();
+  let navigate = useNavigate();
+
+  const login = async (e) => {
+    e.preventDefault();
+     try {
+      let res = await LoginAPI(credentails.email, credentails.password);
+      alert.success("Logged in successfully!!");
+      localStorage.setItem("userEmail", res.user.email);
+      navigate("/home");
+    } catch (err) {
+      console.log(err);
+      alert.error("Please Check your Credentials");
+    }
+  };
 
   return (
     <Fragment>
       <div className="absolute flex justify-center top-[15%] w-full">
         <form
-          onSubmit={formSubmitHandler}
+          onSubmit={login}
           className=" bg-#f1f1f1  flex flex-col items-center px-[3vw] py-[2vh] justify-center h-fit rounded-tr-[50px] rounded-bl-[50px]"
         >
           <div className="w-full justify-center text-center border-b-2 pb-3 border-black">
@@ -28,8 +46,12 @@ const LoginCard = () => {
               <input
                 type="text"
                 required
+                name="email"
                 className="outline-none text-start border-l-2 border-black pl-5"
                 placeholder="Enter Your Email"
+                onChange={(event) =>
+                  setCredentails({ ...credentails, email: event.target.value })
+                }
               />
             </div>
 
@@ -39,7 +61,14 @@ const LoginCard = () => {
                 required
                 className="outline-none text-start border-l-2 border-black pl-5"
                 placeholder="Enter the Password"
+                name="password"
                 type={show ? "text" : "password"}
+                onChange={(event) =>
+                  setCredentails({
+                    ...credentails,
+                    password: event.target.value,
+                  })
+                }
               />
               {show ? (
                 <BiSolidHide

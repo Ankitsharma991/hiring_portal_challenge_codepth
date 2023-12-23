@@ -9,6 +9,7 @@ import LoginCard from "./components/auth/LoginCard";
 import SignupCard from "./components/auth/SignupCard";
 import Job from "./components/Job";
 import NewJob from "./components/NewJob";
+import { app } from "./FirebaseConfig";
 
 function App() {
   return (
