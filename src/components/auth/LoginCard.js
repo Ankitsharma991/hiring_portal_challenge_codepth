@@ -1,10 +1,9 @@
-import React, { Fragment,  useState } from "react";
+import React, { Fragment, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { FaUserLock } from "react-icons/fa";
 import { BiSolidHide } from "react-icons/bi";
 import { BiShow } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../FirebaseConfig";
@@ -13,7 +12,7 @@ const LoginCard = () => {
   const [show, setShow] = useState(false);
   const [inputs, setInputs] = useState({ email: "", password: "" });
 
-  const alert = useAlert();
+  // const alert = useAlert();
   let navigate = useNavigate();
 
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -33,11 +32,11 @@ const LoginCard = () => {
       );
 
       if (regUser?.user) {
-        alert.success("User logged in successfully!!");
+        // alert.success("User logged in successfully!!");
         navigate("/jobs");
       } else {
         // console.log(error);
-        alert.error("User not found!!");
+        // alert.error("User not found!!");
       }
     } catch (err) {
       alert.error(err.message);

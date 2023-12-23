@@ -4,17 +4,16 @@ import Drawer from "./Drawer";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../FirebaseConfig";
 import { useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
 
 const Job = () => {
   const navigate = useNavigate();
-  const alert = useAlert();
+  // const alert = useAlert();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user?.accessToken) {
         alert.error("Login in to access job list!!");
-        navigate("/login");
+        // navigate("/login");
       }
     });
 

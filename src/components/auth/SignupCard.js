@@ -6,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../FirebaseConfig";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 
 const SignupCard = () => {
@@ -21,7 +21,7 @@ const SignupCard = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const alert = useAlert();
+  // const alert = useAlert();
   const navigate = useNavigate();
 
   const handleChange = async (e) => {
@@ -45,10 +45,10 @@ const SignupCard = () => {
         inputs.password
       );
       if (!newUser) return;
-      alert.success("User Registered Successfully!!");
+      // alert.success("User Registered Successfully!!");
       navigate("/login");
     } catch (error) {
-      alert.error(error.message);
+      // alert.error(error.message);
     }
   };
   return (

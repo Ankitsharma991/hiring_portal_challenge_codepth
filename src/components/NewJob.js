@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
 import { postNewJob } from "./api/authApi";
-import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 
 const NewJob = () => {
@@ -13,7 +12,7 @@ const NewJob = () => {
     mode: "",
   });
 
-  const alert = useAlert();
+  // const alert = useAlert();
   const navigate = useNavigate();
 
   const handleChange = async (e) => {
@@ -24,10 +23,10 @@ const NewJob = () => {
     e.preventDefault();
     try {
       postNewJob(inputs);
-      alert.success("Job Created Successfully!!");
+      // alert.success("Job Created Successfully!!");
       navigate("/jobs");
     } catch (error) {
-      alert.error(error.message);
+      // alert.error(error.message);
     }
     console.log(inputs);
   };
