@@ -4,11 +4,29 @@ import { FaUser, FaUserLock } from "react-icons/fa";
 import { GiConfirmed } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
+// import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+
 
 const SignupCard = () => {
   const [show, setShow] = useState(false);
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-  const formSubmitHandler = () => {};
+  // const [createUserWithEmailAndPassword, user, loading, error] =
+  //   useCreateUserWithEmailAndPassword(auth);
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(inputs);
+  };
   return (
     <Fragment>
       <div className="absolute flex justify-center top-[15%] w-full">
@@ -28,6 +46,8 @@ const SignupCard = () => {
               <input
                 type="text"
                 required
+                onChange={handleChange}
+                name="username"
                 className="outline-none text-start border-l-2 border-black pl-5"
                 placeholder="Enter Your Name"
               />
@@ -37,6 +57,8 @@ const SignupCard = () => {
               <MdEmail className="lg:h-[30px] lg:w-[30px] w-[20px] h[20px]" />
               <input
                 type="email"
+                name="email"
+                onChange={handleChange}
                 required
                 className="outline-none text-start border-l-2 border-black pl-5"
                 placeholder="Enter Your Email"
@@ -47,6 +69,8 @@ const SignupCard = () => {
               <FaUserLock className="lg:h-[30px] lg:w-[30px] w-[20px] h[20px]" />
               <input
                 required
+                name="password"
+                onChange={handleChange}
                 className="outline-none text-start border-l-2 border-black pl-5"
                 placeholder="Enter the Password"
                 type={show ? "text" : "password"}
@@ -69,6 +93,8 @@ const SignupCard = () => {
               <input
                 type="password"
                 required
+                onChange={handleChange}
+                name="confirmPassword"
                 className="outline-none text-start border-l-2 border-black pl-5"
                 placeholder="Confirm the Password"
               />
