@@ -93,7 +93,7 @@ const NewJob = () => {
                     type="text"
                     onChange={handleChange}
                     placeholder="https://www.example.com/"
-                    className="outline-none text-start border-l-2 border-black pl-5"
+                    className="outline-none text-start border-l-2 w-full border-black pl-5"
                   />
                 </div>
 
