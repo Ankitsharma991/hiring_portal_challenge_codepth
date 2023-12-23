@@ -255,9 +255,9 @@ export default function Example() {
 
               {/* Product grid */}
               <div className="lg:col-span-3 ">
-                <div className="flex justify-center gap-5 flex-col items-center bg-#f1f1f1 py-3 ">
+                <div className="flex justify-center gap-5 rounded-[10px] mb-5 flex-col items-center bg-#f1f1f1 py-3 ">
                   <p className="text-clip font-bold">Job Title</p>
-                  <div className="flex justify-evenly w-full px-5">
+                  <div className="flex justify-evenly w-full px-8">
                     <div className="flex gap-3 flex-wrap w-full">
                       <p>Requirements:</p>
                       <p>tech stacks</p>
