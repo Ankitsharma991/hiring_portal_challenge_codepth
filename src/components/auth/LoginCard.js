@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment,  useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { FaUserLock } from "react-icons/fa";
 import { BiSolidHide } from "react-icons/bi";
@@ -31,9 +31,14 @@ const LoginCard = () => {
         inputs.email,
         inputs.password
       );
-      if (!regUser) return alert.error(error.message);
-      alert.success("user logged in successfully!!");
-      navigate("/job");
+
+      if (regUser?.user) {
+        alert.success("User logged in successfully!!");
+        navigate("/jobs");
+      } else {
+        // console.log(error);
+        alert.error("User not found!!");
+      }
     } catch (err) {
       alert.error(err.message);
     }

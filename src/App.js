@@ -13,20 +13,30 @@ import { app } from "./FirebaseConfig";
 
 function App() {
   return (
-    <Fragment>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<LoginCard />} />
-          <Route path="/signup" element={<SignupCard />} />
-          <Route path="/jobs" element={<Job />} />
-          <Route path="/new-job" element={<NewJob />} />
-        </Routes>
-        <Floatnav />
-        <Footer />
-      </Router>
-    </Fragment>
+    <Router>
+      <div className="flex flex-col relative">
+        <div className="top-0 w-full fixed">
+          <Navbar />
+        </div>
+        <div className="w-full mt-[20vh]">
+          <div className="min-h-[85vh]">
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/login" element={<LoginCard />} />
+              <Route path="/signup" element={<SignupCard />} />
+              <Route path="/jobs" element={<Job />} />
+              <Route path="/new-job" element={<NewJob />} />
+            </Routes>
+            <div className="fixed bottom-[25vh] w-full flex justify-center ">
+              <Floatnav className="justify-center" />
+            </div>
+          </div>
+          <div>
+            <Footer />
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
 

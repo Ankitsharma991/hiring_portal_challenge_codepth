@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <div className="flex flex-wrap fixed justify-between w-full bg-#f1f1f1 px-5  lg:px-20 md:px-20 py-5">
+      <div className="flex flex-wrap justify-between w-full bg-#f1f1f1 px-5  lg:px-20 md:px-20 py-5">
         <div className="">
           <Link to="/">
             <p className="text-black lg:text-[2vmax] hover:cursor-pointer font-bold text-center font-['Irish-Grover']">

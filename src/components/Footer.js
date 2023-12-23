@@ -5,8 +5,7 @@ import Instagram from "../assets/images/instagram.png";
 
 const Footer = () => {
   return (
-    <Fragment>
-      <div className="block bottom-0 absolute w-full">
+      <div className="block w-full">
         <div className="flex lg:justify-between py-5 flex-wrap lg:px-20 px-5 bg-#f1f1f1 justify-center ">
           <div className="flex flex-col gap-2">
             <p className="text-center">We are available on</p>
@@ -39,7 +38,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </Fragment>
   );
 };
 

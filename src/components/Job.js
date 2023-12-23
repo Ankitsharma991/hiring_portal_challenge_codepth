@@ -1,19 +1,37 @@
-import React, { Fragment } from "react";
-import { FaAngleDown } from "react-icons/fa6";
-import { FaAngleUp } from "react-icons/fa6";
-import { IoFilter } from "react-icons/io5";
-import Drawer from "./Drawer";
+import React, { Fragment, useEffect, useState } from "react";
 import { PiArrowFatLinesRightFill } from "react-icons/pi";
+import Drawer from "./Drawer";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../FirebaseConfig";
+import { useNavigate } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 const Job = () => {
+  const navigate = useNavigate();
+  const alert = useAlert();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user?.accessToken) {
+        alert.error("Login in to access job list!!");
+        navigate("/login");
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate]);
+
   return (
     <Fragment>
-      <div className="absolute flex justify-start top-[15%]  w-full">
-        <div></div>
-        <div>
-          <div className="flex justify-center items-start">
+      <div className=" flex flex-col justify-center text-center w-full">
+        <div className="flex justify-center text-center">
+          <p className="font-bold lg:text-[2vmax] text-[3vmax] text-center">
+            Search Your Dream Job
+          </p>
+        </div>
+        <div className="w-full">
+          <div className="flex justify-center w-full h-full items-start">
             <Drawer />
-            <PiArrowFatLinesRightFill className="justify-center items-center self-center min-h[20px]" />
           </div>
         </div>
       </div>
@@ -22,12 +40,3 @@ const Job = () => {
 };
 
 export default Job;
-
-//             <div>
-//               <IoSearch />
-//               <input
-//                 type="text"
-//                 placeholder="Search Jobs with keywords/titles/role etc"
-//               />
-//             </div>
-//           </div>

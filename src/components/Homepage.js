@@ -2,7 +2,7 @@ import React from "react";
 
 const Homepage = () => {
   return (
-    <div className="absolute flex justify-center top-[15%] w-full">
+    <div className=" flex justify-center w-full">
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="font-bold lg:text-[2vmax] text-[3vmax] text-center">

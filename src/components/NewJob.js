@@ -1,13 +1,12 @@
 import React, { Fragment, useState } from "react";
-import { IoSearch } from "react-icons/io5";
 
 const NewJob = () => {
   return (
     <Fragment>
-      <div className="absolute flex justify-center top-[15%] w-full">
+      <div className=" flex justify-center fixed w-full">
         <div className="flex flex-col items-center justify-center">
           <h1 className="font-bold lg:text-[2vmax] text-[3vmax] text-center">
-            Create a Job
+            Create a Job 
           </h1>
           <div>
             <form className="flex flex-col justify-between items-center mt-5">

@@ -5,8 +5,10 @@
         "Firestore",
         "Floatnav",
         "flowbite",
+        "headlessui",
         "heroicons",
         "Landingpage",
+        "Reactjs",
         "tailwindcss",
         "vmax"
     ]
