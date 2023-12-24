@@ -22,7 +22,7 @@ const Profile = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(user);
-      //   console.log("user-profile", user);
+        console.log("user-profile", user);
       const uid = user.uid;
     } else {
     }
@@ -53,13 +53,13 @@ const Profile = () => {
             </p>
             <div className="flex flex-col justify-start text-start md:gap-[2vh] md:ml-[-10vw] mt-5">
               <p className="font-bold text-2xl">
-                User id: <span className="font-thin ml-2">{user.uid}</span>{" "}
+                User id: <span className="font-thin ml-2">{user?.uid}</span>{" "}
               </p>
               <p className="font-bold text-2xl">
-                Name: <span>{user.displayName}</span>
+                Name: <span>{user?.displayName}</span>
               </p>
               <p className="font-bold text-2xl">
-                Email: <span className="font-thin ml-2">{user.email}</span>
+                Email: <span className="font-thin ml-2">{user?.email}</span>
               </p>
             </div>
           </div>
