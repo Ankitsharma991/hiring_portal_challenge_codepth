@@ -15,8 +15,7 @@ const LoginCard = () => {
 
   let navigate = useNavigate();
 
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
 
   const handleChange = async (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));

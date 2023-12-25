@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { onLogout } from "./api/authApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -19,28 +18,17 @@ const Profile = () => {
   };
 
   const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUser(user);
-        console.log("user-profile", user);
-      const uid = user.uid;
-    } else {
-    }
-  });
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      //   console.log("profile", user.uid);
       if (!user?.accessToken) {
         toast.error("Login in to access job list!!");
         navigate("/login");
       }
-    });
-    return () => {
-      unsubscribe();
       setUser(user);
-    };
-  }, [navigate, user, auth]);
+    });
+    return () => unsubscribe();
+  }, [navigate, auth]);
 
   return (
     <>
@@ -53,13 +41,13 @@ const Profile = () => {
             </p>
             <div className="flex flex-col justify-start text-start md:gap-[2vh] md:ml-[-10vw] mt-5">
               <p className="font-bold text-2xl">
-                User id: <span className="font-thin ml-2">{user?.uid}</span>{" "}
+                User id: <span className="md:font-thin font-light ml-2 md:text-2xl text-[18px]">{user?.uid}</span>{" "}
               </p>
               <p className="font-bold text-2xl">
                 Name: <span>{user?.displayName}</span>
               </p>
               <p className="font-bold text-2xl">
-                Email: <span className="font-thin ml-2">{user?.email}</span>
+                Email: <span className="md:font-thin font-light ml-2 md:text-2xl text-[18px]">{user?.email}</span>
               </p>
             </div>
           </div>
@@ -72,7 +60,7 @@ const Profile = () => {
         <div className="flex justify-center">
           <button
             onClick={() => onLogout()}
-            className="border-2 border-white w-fit h-fit px-8 py-2 font-bold uppercase bg-gray-200 shadow-md "
+            className="border-2 md:mt-5 mt-5 border-white w-fit h-fit px-8 py-2 font-bold uppercase bg-gray-200 shadow-md "
           >
             Logout
           </button>
